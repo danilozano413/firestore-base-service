@@ -1,0 +1,30 @@
+{
+    "name": "firestore-base-service",
+    "version": "1.0.0",
+    "description": "Base service to manage firestore items",
+    "main": "index.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/danilozano413/firestore-base-service.git"
+    },
+    "keywords": [
+        "firebase",
+        "firestore",
+        "package",
+        "item"
+    ],
+    "author": "Daniel Lozano",
+    "license": "Apache2",
+    "bugs": {
+        "url": "https://github.com/danilozano413/firestore-base-service/issues"
+    },
+    "homepage": "https://github.com/danilozano413/firestore-base-service#readme",
+    "dependencies": {
+        "@angular/fire": "^7.2.0",
+        "@firebase/firestore": "^3.4.2",
+        "rxjs": "^7.5.2"
+    }
+}
