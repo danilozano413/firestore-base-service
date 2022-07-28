@@ -25,6 +25,7 @@
     "homepage": "https://github.com/danilozano413/firestore-base-service#readme",
     "dependencies": {
         "@angular/fire": "^7.2.0",
+        "@angular/core": "*",
         "@firebase/firestore": "^3.4.2",
         "np": "^7.6.2",
         "rxjs": "^7.5.2"
