@@ -22,7 +22,6 @@ export interface YourItemInterface extends ItemInterface {
    // Your properties
 }
 
-
 ```
 
 Extends your item service from our base to get the functionally and add the item type string to manage on database
@@ -39,6 +38,7 @@ export abstract class YourItemService<YourItemInterface> extends  BaseService {
 
     // your methods here
 }
+
 ```
 
 ## Methods
