@@ -1,6 +1,6 @@
 {
     "name": "firestore-base-service",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Base service to manage firestore items",
     "main": "index.ts",
     "scripts": {
