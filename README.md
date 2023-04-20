@@ -41,6 +41,5 @@ export abstract class YourItemService<YourItemInterface> extends  BaseService {
 
 ```
 
-## Methods
+<!--  TODO ## Methods -->
 
-// TODO
