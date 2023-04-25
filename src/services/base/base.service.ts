@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { collection, collectionData, doc, docData, Firestore, setDoc, addDoc } from '@angular/fire/firestore';
-import { DocumentData } from '@firebase/firestore';
-import { firstValueFrom, Observable } from 'rxjs';
+import { CollectionReference, DocumentData, DocumentReference } from '@firebase/firestore';
+import { firstValueFrom } from 'rxjs';
 import { ItemInterface } from '../../interfaces/item.interface';
 
 @Injectable({
@@ -13,33 +13,35 @@ export abstract class BaseService<T extends ItemInterface = any> {
     constructor(protected firestore: Firestore) {}
 
     protected getQuery() {
-        return collection(this.firestore, this.itemType);
+        return collection(this.firestore, this.itemType) as CollectionReference<T>;
     }
 
     protected getReference(id: string) {
-        return doc(this.firestore, this.itemType, id);
+        return doc(this.firestore, this.itemType, id) as DocumentReference<T>;
     }
 
     public getItemObservable(id: string) {
-        return docData(this.getReference(id), { idField: 'id' }) as Observable<T>;
+        return docData<T>(this.getReference(id), { idField: 'id' });
     }
     public getItemsObservable() {
-        return collectionData(this.getQuery(), { idField: 'id' }) as Observable<T[]>;
+        return collectionData<T>(this.getQuery(), { idField: 'id' });
     }
 
-    public async getItem(id: string) {
-        return await firstValueFrom(this.getItemObservable(id));
+    public getItem(id: string) {
+        return firstValueFrom(this.getItemObservable(id));
     }
 
-    public async getItems() {
-        return (await firstValueFrom(this.getItemsObservable())) as T[];
+    public getItems() {
+        return firstValueFrom(this.getItemsObservable());
     }
 
     public async setItem(item: Partial<T>) {
-        if (item.id) {
-            return await this.updateItem(item);
-        } else {
-            return await this.addItem(item);
+        if (item) {
+            if (item.id) {
+                return await this.updateItem(item);
+            } else {
+                return await this.addItem(item);
+            }
         }
         return item;
     }
